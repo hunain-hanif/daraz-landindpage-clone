@@ -1,0 +1,1216 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>
+        Daraz Clone
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f5 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900">
+    <!-- Top orange bar -->
+    <div class="bg-[#FF4800] text-white text-xs font-semibold flex justify-between px-4 py-1 items-center">
+        <div>
+            30%+ MEGA DEALS UP
+        </div>
+        <div class="flex space-x-4">
+            <div>
+                24/7 CUSTOMER SUPPORT
+            </div>
+            <div>
+                LOGIN
+            </div>
+            <div>
+                REGISTER
+            </div>
+            <div>
+                SELL ON DARAZ
+            </div>
+        </div>
+    </div>
+    <!-- Header with logo, search, cart -->
+    <header class="bg-[#FF4800] px-4 py-3 flex items-center space-x-4">
+        <div class="flex items-center space-x-2 flex-shrink-0">
+            <img alt="Daraz logo in white on orange background" class="h-7 w-auto" height="30"
+                src="/images/daraz-logo.png" width="100" />
+        </div>
+        <form class="flex flex-grow max-w-4xl">
+            <input class="flex-grow rounded-l-md px-3 py-2 text-sm focus:outline-none" placeholder="Search in Daraz"
+                type="text" />
+            <button aria-label="Search" class="bg-white text-[#FF4800] px-3 py-2 rounded-r-md text-sm" type="submit">
+                <i class="fas fa-search">
+                </i>
+            </button>
+        </form>
+        <button aria-label="Cart" class="text-white text-lg">
+            <i class="fas fa-shopping-cart">
+            </i>
+        </button>
+    </header>
+    <main class="px-4 max-w-[1600px] mx-auto space-y-4">
+        <!-- Banner 1 -->
+        
+ <!-- Carousel container with width 1400px and height 400px -->
+<style>
+    /* Fixed width and height for carousel container */
+    .carousel-container {
+      width: 1400px;
+      max-width: 95%;
+      height: 400px; /* updated height */
+    }
+    /* Hide scrollbars for smooth swipe on mobile */
+    .carousel-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel-wrapper {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  </style>
+  
+  <div class="carousel-container relative rounded-lg shadow-lg bg-white overflow-hidden mx-auto">
+    <div id="carousel" class="carousel-wrapper flex overflow-x-hidden relative h-full select-none transition-transform duration-500 ease-in-out">
+      <img
+        src="images/daraz-caraousel-2.webp"
+        alt="Image 1"
+        class="carousel-item flex-shrink-0 w-full object-cover h-full"
+      />
+      
+      <img
+        src="images/daraz-caraousel-2.webp"
+        alt="Image 2"
+        class="carousel-item flex-shrink-0 w-full object-cover h-full"
+      />
+      <img
+        src="images/daraz-caraousel-3.webp"
+        alt="Image 3"
+        class="carousel-item flex-shrink-0 w-full object-cover h-full"
+      />
+    </div>
+    <!-- Navigation Buttons -->
+    <button id="prevBtn" aria-label="Previous slide" class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full shadow p-2 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button id="nextBtn" aria-label="Next slide" class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full shadow p-2 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+    <!-- Dots -->
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+      <button aria-label="Go to slide 1" class="dot w-3 h-3 rounded-full bg-gray-400"></button>
+      <button aria-label="Go to slide 2" class="dot w-3 h-3 rounded-full bg-gray-400"></button>
+      <button aria-label="Go to slide 3" class="dot w-3 h-3 rounded-full bg-gray-400"></button>
+    </div>
+  </div>
+  
+  <script>
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dots = document.querySelectorAll('.dot');
+    const totalItems = carousel.children.length;
+    let currentIndex = 0;
+    let autoSlideInterval;
+  
+    function updateCarousel() {
+      const width = carousel.clientWidth;
+      carousel.style.transform = `translateX(-${currentIndex * width}px)`;
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.add('bg-blue-600');
+          dot.classList.remove('bg-gray-400');
+        } else {
+          dot.classList.add('bg-gray-400');
+          dot.classList.remove('bg-blue-600');
+        }
+      });
+    }
+  
+    function goToSlide(index) {
+      currentIndex = index < 0 ? totalItems -1 : index >= totalItems ? 0 : index;
+      updateCarousel();
+    }
+  
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 3000); // slide every 3 seconds
+    }
+  
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+  
+    prevBtn.addEventListener('click', () => {
+      goToSlide(currentIndex - 1);
+      stopAutoSlide();
+      startAutoSlide();
+    });
+  
+    nextBtn.addEventListener('click', () => {
+      goToSlide(currentIndex + 1);
+      stopAutoSlide();
+      startAutoSlide();
+    });
+  
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        goToSlide(idx);
+        stopAutoSlide();
+        startAutoSlide();
+      });
+    });
+  
+    // Responsive resize handling
+    window.addEventListener('resize', () => {
+      updateCarousel();
+    });
+  
+    // Initialize carousel
+    updateCarousel();
+    startAutoSlide();
+  </script>
+  
+        
+        
+
+
+        
+        
+        
+        <!-- Text below banner -->
+        <div class="text-sm font-semibold text-gray-700">
+            فیشن سین
+        </div>
+        <!-- Product row 1 -->
+        <section class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 border border-gray-200 rounded-lg p-3">
+            <div class="text-center text-xs space-y-1">
+                <img alt="Candy by Hale Ice Tea Black 1000ml bottle" class="mx-auto" height="100"
+                    src="https://storage.googleapis.com/a1aa/image/3a63c05d-cefa-4d4f-80ce-cf9a68ceaa8b.jpg"
+                    width="100" />
+                <div class="font-semibold truncate">
+                    Candy by Hale Ice Tea Black 1000ml
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.51,499
+                </div>
+                <div class="text-gray-400 text-[10px]">
+                    + 2% Cashback
+                </div>
+            </div>
+            <div class="text-center text-xs space-y-1">
+                <img alt="Colgate Toothpaste pack" class="mx-auto" height="100"
+                    src="https://storage.googleapis.com/a1aa/image/49d80036-ec49-42db-48b6-71ab7c03cc24.jpg"
+                    width="100" />
+                <div class="font-semibold truncate">
+                    Triple Fresh Boost Colgate MaxFresh Spicy...
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.720
+                </div>
+                <div class="text-gray-400 text-[10px]">
+                    -20%
+                </div>
+            </div>
+            <div class="text-center text-xs space-y-1">
+                <img alt="Brite Maximum Power 500g Detergent pack" class="mx-auto" height="100"
+                    src="https://storage.googleapis.com/a1aa/image/22884553-8132-4d7f-cf22-bc198c75230c.jpg"
+                    width="100" />
+                <div class="font-semibold truncate">
+                    Brite Maximum Power 500g - Detergent
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.248
+                </div>
+                <div class="text-gray-400 text-[10px]">
+                    -17%
+                </div>
+            </div>
+            <div class="text-center text-xs space-y-1">
+                <img alt="Chanel perfume bottle" class="mx-auto" height="100"
+                    src="https://storage.googleapis.com/a1aa/image/14f9811d-3744-482f-6139-a964304576e6.jpg"
+                    width="100" />
+                <div class="font-semibold truncate">
+                    CHANEL NO 5 EDP 100ML
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.91,997
+                </div>
+                <div class="text-gray-400 text-[10px]">
+                    -20%
+                </div>
+            </div>
+            <div class="text-center text-xs space-y-1">
+                <img alt="White air conditioner unit" class="mx-auto" height="100"
+                    src="https://storage.googleapis.com/a1aa/image/74981d7e-1b7f-42b4-9b5a-3d40bc4bd680.jpg"
+                    width="100" />
+                <div class="font-semibold truncate">
+                    Dawlance Air Conditioner Magic 1.0 DC Inverter
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.87,767
+                </div>
+                <div class="text-gray-400 text-[10px]">
+                    -20%
+                </div>
+            </div>
+            <div class="text-center text-xs space-y-1">
+                <img alt="Blue ladies bag shoulder bag crossbody" class="mx-auto" height="100"
+                    src="https://storage.googleapis.com/a1aa/image/0aac247b-a481-415e-644a-5cd607dbd7cf.jpg"
+                    width="100" />
+                <div class="font-semibold truncate">
+                    Eyes Zone Ladies Bag Shoulder Bag Cross Body
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.499
+                </div>
+                <div class="text-gray-400 text-[10px]">
+                    -20%
+                </div>
+            </div>
+        </section>
+        <!-- Text below products -->
+        <div class="text-sm font-semibold text-gray-700 mt-6">
+            زوم پر جھات
+        </div>
+        <!-- Category icons row -->
+        <section
+            class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-12 gap-2 border border-gray-200 rounded-lg p-2 text-center text-xs text-gray-700">
+            <div class="space-y-1">
+                <img alt="Anklets jewelry icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/4207d2fa-259c-4563-7a3c-5294c31e3e88.jpg"
+                    width="50" />
+                <div>
+                    Anklets
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="Nail polish bottles icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/5533fea9-0f01-4155-31ac-37584f50d9f9.jpg"
+                    width="50" />
+                <div>
+                    نخن، ناخن
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="Potato noodles and pizza tools icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/bc758f76-0cb3-4245-4e91-bd73630fb723.jpg"
+                    width="50" />
+                <div>
+                    Potato, Noodles &amp; Pizza Tools
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="Metal rack icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/509be0ac-10cb-437d-dbb0-27b5e9065dbc.jpg"
+                    width="50" />
+                <div>
+                    میٹل ریک
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="Speakers icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/f3aef6ba-683a-478e-86dd-dd04b6774d9f.jpg"
+                    width="50" />
+                <div>
+                    اسپیکر
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="Marina icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/a7cc4205-664d-4cfd-c164-025c83d23457.jpg"
+                    width="50" />
+                <div>
+                    Marina
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="Hoodies and sweatshirts icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/7ca55067-88f9-4683-56bc-a167f8249fc6.jpg"
+                    width="50" />
+                <div>
+                    Hoodies &amp; Sweatshirts
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="Dog and cat electric clippers icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/31acad83-5c19-4870-b8ea-06458defa037.jpg"
+                    width="50" />
+                <div>
+                    Dog &amp; Cat Electric Clippers
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="Kitchen tools icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/cb803870-0a07-4bbe-c9f1-f6404716d52b.jpg"
+                    width="50" />
+                <div>
+                    کچن کے اوزار
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="White towels icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/271a9f66-2ec5-4fec-6f11-64c05eaa227a.jpg"
+                    width="50" />
+                <div>
+                    White Towels
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="Microphones icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/082cfb7b-d8e3-4d99-04c6-de21f1a68214.jpg"
+                    width="50" />
+                <div>
+                    Microphones
+                </div>
+            </div>
+            <div class="space-y-1">
+                <img alt="Scooters icon" class="mx-auto" height="50"
+                    src="https://storage.googleapis.com/a1aa/image/9c10d7ff-b97d-48f7-3180-0a1d461194e5.jpg"
+                    width="50" />
+                <div>
+                    Scooters
+                </div>
+            </div>
+        </section>
+        <!-- Text below categories -->
+        <div class="text-sm font-semibold text-gray-700 mt-6">
+            سب سے زیادہ خریدے گئے
+        </div>
+        <!-- Products grid -->
+        <section class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-4">
+           
+            <!-- Product 1 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <a href="#">
+                <img  alt="Airpods pro 2nd generation wireless earbuds with charging case" class="mx-auto mb-1"
+                    height="150"
+                    src="https://storage.googleapis.com/a1aa/image/ad01a151-2257-4981-2dc4-bebef3d8d03f.jpg"
+                    width="150" />
+                </a>
+                <div class="font-semibold truncate">
+                    Airpods pro 2nd generation wireless earbuds
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.5,649
+                </div>
+                <div class="text-green-600 font-semibold text-[10px]">
+                    -50%
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (12)
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="New mini rechargeable portable fan for school and office" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/ffaa8804-948b-4107-d49a-7da183eed603.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    New Mini Rechargeable Portable Fan For School
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.529
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (12)
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Whitening cream for face and body" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/892f5152-2ca6-435b-419b-5f8e5e089ec2.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Whitening cream whitening cream for face and body
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.366
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (12)
+                </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Tempered glass screen protector for Apple Watch" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/c4dc3073-3903-4261-12a0-7a77fd34ac7d.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Tempered Glass Screen Protector - Apple Watch
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.99
+                </div>
+                <div class="text-green-600 font-semibold text-[10px]">
+                    -20%
+                </div>
+            </div>
+            <!-- Product 5 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="GTA Vice City game only for Android mobile" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/4166588a-2cd2-46e0-114c-fe6e990e1047.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    GTA Vice City Game Only for Android Mobile
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.45
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (7)
+                </div>
+            </div>
+            <!-- Product 6 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Pack of 2 high quality stainless steel chains" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/d02f32fd-1eac-4f13-576a-4606e8a9d027.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Pack of 2 High Quality Stainless Steel Chains
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.69
+                </div>
+                <div class="text-green-600 font-semibold text-[10px]">
+                    -20%
+                </div>
+            </div>
+            <!-- Product 7 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="MID adapter and waterproof headphone manufacture" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/e8cb4246-06e7-4ca4-da75-4963de7f6906.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    MID, Adap, &amp; Waterproof Headphone Manufacture
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.360
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (7)
+                </div>
+            </div>
+            <!-- Product 8 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Sandals for men, new stylish and trending" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/962a7f98-65d2-400c-448d-f8ba57c0642c.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Sandals for Men | New Stylish and Trending
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.349
+                </div>
+                <div class="text-green-600 font-semibold text-[10px]">
+                    -20%
+                </div>
+            </div>
+            <!-- Product 9 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Original pair headphone with wired button headset" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/f149bd40-53de-456e-3c53-aa27768e00d5.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Original pair headphone wired button headset
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.751
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 10 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Ear wax cleaning kit for nose, ear, and teeth" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/2af39a6e-6efd-4af0-7086-d1d7e147ddf7.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Ear Wax Cleaning Kit for Nose, Ear, Teeth
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.104
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 11 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Top cloud backpack black for school university" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/f35d1f26-832e-462a-3bf1-1378c203044a.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Top Cloud Backpack Black for School University
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.649
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (7)
+                </div>
+            </div>
+            <!-- Product 12 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="NS mobile screen magnifier for enlarged video 3D" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/858aa55d-6423-469e-7b98-67e8381cb42c.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    NS Mobile Screen Magnifier for Enlarged Video 3D
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.355
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 13 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="SAUVAGE IMPRESSION Perfume 100ml best for men" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/adbae86b-68b6-4551-03a4-5b20257a79d9.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    SAUVAGE IMPRESSION Perfume 100ml Best For Men
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.857
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 14 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="EN &amp; New Face Kit 2 in 1 Brightening Glow Kit" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/599d56c6-f926-4575-af99-fbec89ba3b11.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    EN &amp; New Face Kit 2 in 1 Brightening Glow Kit
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.520
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 15 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Portable air conditioner pump with replacement valve" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/1b9cd58d-e387-4dad-0dfa-d8a2467a2694.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Portable Air Conditioner Pump With Replacement Valve
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.2,297
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 16 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="3 pcs motion activated car wheel taillight kit" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/f2ba83e3-19f1-4f12-3b79-1d7ca945fc92.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    3 Pcs Motion Activated Car Wheel Taillight Kit
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.644
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 17 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="New design good quality backpack for laptops and school" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/377fc743-b628-4979-935d-724c50dc028a.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    New Design Good Quality Backpack for Laptops
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.331
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 18 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Double chocolate spread 180g chocolate and peanut butter" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/27abec71-5e92-4a7e-73f8-023268197bd1.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Double Chocolate Spread 180g Chocolate and Peanut Butter
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.1,049
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 19 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Ceiling fan covers dustproof fan covers with 10 pcs" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/839c63a7-3857-4441-320c-c7ba0ca48d79.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Ceiling Fan Covers Dustproof Fan Covers with 10 pcs
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.65
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 20 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Golden plated crown ring for men and women" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/2e6132c0-bc83-4e90-3bb2-83306f156a78.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    GOLDEN PLATED CROWN RING FOR MEN OR WOMEN
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.149
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 21 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="iPhone 6 non pro good condition with charger" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/fd499ece-4818-46a0-10b1-0e8ffd6b9938.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    iPhone 6 Non pro Good Condition with Charger
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.6,750
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 22 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Black punk ring and interchangeable parts for men" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/a3d23e4a-37a6-4a7b-57d0-07bd44ea9534.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Black Punk Ring &amp; Interchangeable Parts for Men
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.109
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 23 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Manual water pump for 1 liter clean large bottle" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/6f97cd0e-2be4-43ea-f5bc-b08235816449.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Manual Water Pump for 1 Liter Clean Large Bottle
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.337
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 24 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="New cosmetic pink portable makeup pouch with zipper" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/ba98d0ed-4af2-4a7b-2090-aae474463ccd.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    New Cosmetic pink Portable Makeup Pouch
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.134
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 25 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Writing LCD drawing 6.5 inch multicolor screen tablet" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/0d075d01-7f8e-4091-2a7b-a8cd0fb1a8e8.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Writing LCD Drawing 6.5 Inch Multicolor Screen
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.248
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 26 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Pack of 10 and fruit plant extract moisturizing cream" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/c2854bc8-4806-42e7-e47b-4e8712c9d4fc.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Pack of 10 &amp; Fruit Plant Extract Moisturizing
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.185
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (10)
+                </div>
+            </div>
+            <!-- Product 27 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Spider web shooter toy for kids boys and girls" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/9e91c9a8-7c5b-4ba1-fdcb-15705d8bc742.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Spider Web Shooter Toy for Kids Boys, Kids
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.464
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (4)
+                </div>
+            </div>
+            <!-- Product 28 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Lenovo N21 4th Gen laptop with 1366x768 display and 4GB RAM" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/556bc246-93d3-4eb3-f094-49b7949d725d.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Lenovo N21 (4th Gen) Laptop 1366x768 4GB RAM
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.7,699
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 29 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="2 in 1 electric hair straightener and curler" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/a47804f7-f5a5-4c39-96a0-9faea593be9c.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    2 in 1 Electric Hair Straightener Curler
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.1,051
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 30 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Inflatable pillow for travel and comfort" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/8299760b-e155-49f0-e19b-2158f8b0495e.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Inflatable Pillow
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.260
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (10)
+                </div>
+            </div>
+            <!-- Product 31 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="2021 new fashion ladies coin pouch cherry color" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/31391f09-55c2-40dd-9641-3b04609039c6.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    2021 New Fashion Ladies Coin Pouch Cherry Color
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.299
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (10)
+                </div>
+            </div>
+            <!-- Product 32 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Pocket your microwave disposable reinforced cover" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/f9903dea-1d9a-44bc-5f37-81b7741e29d0.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Pocket Your Microwave Disposable Reinforced
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.165
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (10)
+                </div>
+            </div>
+            <!-- Product 33 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Pani puri ready to fry pani spice gold pack" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/1b21c5b0-3ceb-4075-7a2a-7b4f85c0012a.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Pani Puri Ready to Fry Pani Spice Gold
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.220
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (10)
+                </div>
+            </div>
+            <!-- Product 34 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="4 in 1 fan cookie mini portable cooling fan" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/0633eb30-cd53-4727-afe4-35b54dc6b571.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    4 In 1 Fan Cookie - Mini Portable Cooling Fan
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.2,569
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (10)
+                </div>
+            </div>
+            <!-- Product 35 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Travel soap paper 20pcs mini mirror soap with nail file" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/3bc6f162-af5f-48fc-0b1b-56ade34842f4.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Travel Soap Paper 20pcs Mini Mirror Soap With Nail File
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.56
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (10)
+                </div>
+            </div>
+            <!-- Product 36 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Milk and honey gold sugar scrub for skin" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/e110ede0-f7e1-4aa7-56c0-4f08376bd897.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Milk &amp; Honey Gold Sugar Scrub
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.657
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (10)
+                </div>
+            </div>
+            <!-- Product 37 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Mens slip sports and casual shoes for men white trendy style" class="mx-auto mb-1"
+                    height="150"
+                    src="https://storage.googleapis.com/a1aa/image/977a1c8b-33e1-47c8-3e2e-32862ada2b21.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Mens slip sports &amp; casual shoes for men trendy style
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.799
+                </div>
+                <div class="text-green-600 font-semibold text-[10px]">
+                    -12%
+                </div>
+            </div>
+            <!-- Product 38 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="New scratch pocket wear quality online store shopping bag" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/6968c231-7b16-4e27-b900-f9ef0b14c8c6.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    New Scratch Pocket Wear Quality Online Store
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.286
+                </div>
+                <div class="text-green-600 font-semibold text-[10px]">
+                    -27%
+                </div>
+            </div>
+            <!-- Product 39 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="Mini 4 in 1 gaming stick console 64GB 4K with 2 controllers" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/306882e2-3044-46cb-0801-99749b9c8278.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    Mini 4 in 1 Gaming Stick Console 64GB 4K
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.4,160
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (3)
+                </div>
+            </div>
+            <!-- Product 40 -->
+            <div class="border border-gray-200 rounded p-2 text-xs">
+                <img alt="White rose soap powder detergent and bath hand wash" class="mx-auto mb-1" height="150"
+                    src="https://storage.googleapis.com/a1aa/image/cd18108a-5ef8-42e2-7d6e-c5a31728f37a.jpg"
+                    width="150" />
+                <div class="font-semibold truncate">
+                    White Rose Soap Powder Detergent &amp; Bath Hand Wash
+                </div>
+                <div class="text-red-600 font-bold">
+                    Rs.79
+                </div>
+                <div class="text-yellow-400 text-[10px]">
+                    ★★★★★ (10)
+                </div>
+            </div>
+            
+        </section>
+        <!-- Footer -->
+        <footer class="mt-10 text-gray-600 text-xs leading-tight max-w-[1200px] mx-auto px-4">
+            <div class="border-t border-gray-300 pt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="font-semibold mb-2">
+                        Customer Care
+                    </h3>
+                    <ul class="space-y-1">
+                        <li>
+                            Help Center
+                        </li>
+                        <li>
+                            How to Buy
+                        </li>
+                        <li>
+                            Track Your Order
+                        </li>
+                        <li>
+                            Corporate &amp; Bulk Purchasing
+                        </li>
+                        <li>
+                            Returns &amp; Refunds
+                        </li>
+                        <li>
+                            Daraz Wallet
+                        </li>
+                        <li>
+                            Daraz Points
+                        </li>
+                        <li>
+                            Purchase Protection
+                        </li>
+                        <li>
+                            Privacy Policy
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">
+                        Daraz
+                    </h3>
+                    <ul class="space-y-1">
+                        <li>
+                            About Daraz
+                        </li>
+                        <li>
+                            Digital Payments
+                        </li>
+                        <li>
+                            Daraz University
+                        </li>
+                        <li>
+                            Daraz Blog
+                        </li>
+                        <li>
+                            Terms &amp; Conditions
+                        </li>
+                        <li>
+                            Privacy Policy
+                        </li>
+                        <li>
+                            Daraz Affiliate Program
+                        </li>
+                        <li>
+                            Daraz App
+                        </li>
+                        <li>
+                            Sell on Daraz
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div
+                class="border-t border-gray-300 mt-6 pt-6 grid grid-cols-1 md:grid-cols-5 gap-4 text-[9px] leading-tight">
+                <div>
+                    <h4 class="font-semibold mb-1">
+                        How Daraz Transformed Online Shopping in Pakistan
+                    </h4>
+                    <p>
+                        New Daraz Transformed Online Shopping In Pakistan. Shop online at Daraz.pk, Pakistan's
+                        e-commerce marketplace for electronics, fashion, home appliances, and more. Find
+                        exclusive deals and discounts on your favorite brands.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-1">
+                        Top Categories &amp; Brands
+                    </h4>
+                    <ul class="space-y-1">
+                        <li>
+                            Mobile Phones &amp; Accessories
+                        </li>
+                        <li>
+                            Home Appliances
+                        </li>
+                        <li>
+                            Men's Fashion
+                        </li>
+                        <li>
+                            Women's Fashion
+                        </li>
+                        <li>
+                            Consumer Electronics
+                        </li>
+                        <li>
+                            Health &amp; Beauty
+                        </li>
+                        <li>
+                            Sports &amp; Outdoor
+                        </li>
+                        <li>
+                            Automotive &amp; Motorbike
+                        </li>
+                        <li>
+                            Baby &amp; Toys
+                        </li>
+                        <li>
+                            Groceries &amp; Pets
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-1">
+                        Women's Fashion
+                    </h4>
+                    <ul class="space-y-1">
+                        <li>
+                            Abayas &amp; Burqas
+                        </li>
+                        <li>
+                            Ethnic Wear
+                        </li>
+                        <li>
+                            Western Wear
+                        </li>
+                        <li>
+                            Jewellery
+                        </li>
+                        <li>
+                            Handbags &amp; Wallets
+                        </li>
+                        <li>
+                            Footwear
+                        </li>
+                        <li>
+                            Makeup &amp; Skincare
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-1">
+                        Men's Fashion
+                    </h4>
+                    <ul class="space-y-1">
+                        <li>
+                            Shirts &amp; T-Shirts
+                        </li>
+                        <li>
+                            Jeans &amp; Trousers
+                        </li>
+                        <li>
+                            Footwear
+                        </li>
+                        <li>
+                            Watches
+                        </li>
+                        <li>
+                            Accessories
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-1">
+                        Consumer Electronics
+                    </h4>
+                    <ul class="space-y-1">
+                        <li>
+                            Mobile Phones
+                        </li>
+                        <li>
+                            Tablets
+                        </li>
+                        <li>
+                            Laptops
+                        </li>
+                        <li>
+                            TVs &amp; Audio
+                        </li>
+                        <li>
+                            Cameras
+                        </li>
+                        <li>
+                            Gaming Consoles
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+                </div>
+                <div class="mt-2 md:mt-0">
+                    © Daraz 2023
+                </div>
+            </div>
+        </footer>
+    </main>
+    
+</body>
+
+</html>
